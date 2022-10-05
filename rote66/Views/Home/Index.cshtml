@@ -1,0 +1,69 @@
+﻿@model IEnumerable<rote66.Models.Noticias>
+
+@{ 
+    ViewBag.Title = "Home Page";
+}
+
+<h2> Jornalzin do Bg </h2>
+
+<div>
+    <h3><b> Categorias </b></h3>
+    <ul>
+        @foreach (string item in ViewBag.Categoria)
+            {
+            <li>            
+                @Html.ActionLink(item, "MostraCategoria", "Home", new { @categoria = item }, null);
+            </li>
+            }
+    </ul>
+</div>
+
+<div>
+    <h3><b>Noticias </b></h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(item.Titulo, "MostraNoticia", "Home", new
+           {
+               @noticiaId = item.NoticiasId,
+               @categoria = item.Categoria.ToLower(),
+               @titulo = item.Titulo.ToLower()
+
+           }, null);
+                <em>@Html.DisplayFor(modelItem => item.Categoria)</em>
+                <b>@Html.DisplayFor(modelItem => item.Data)</b>
+
+
+            </li>
+        }
+    </ul>
+</div>
+
+@*<div>
+    <ul>
+        @foreach (var item in Model)
+            {
+                <li>
+                    @Html.ActionLink(item.Titulo, "MostraNoticia", "Home", new
+               {
+                   @noticiasID = item.NoticiasId,
+                   @categoria = item.Categoria.ToLower(),
+                   @titulo = item.Titulo.ToLower()
+               }, null);
+
+                    <em>@Html.DisplayFor(modelItem => item.Categoria)</em>
+                    <b>@Html.DisplayFor(modelItem => item.Data)</b>
+                </li>
+            }
+    </ul>
+</div>*@
+
+<div>
+    @Html.ActionLink("Todas as noticias", "Noticias", "Home")
+</div>
+
+    @Scripts.Render("~/bundles/todos/escola") 
+
+
+ 

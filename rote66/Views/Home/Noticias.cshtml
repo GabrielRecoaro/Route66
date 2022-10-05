@@ -1,0 +1,25 @@
+﻿@model IEnumerable < rote66.Models.Noticias>
+@{
+    ViewBag.Title = "Noticias";
+}
+
+<h2>Noticias</h2>
+
+<div>
+    <ul>
+        @foreach (var item in Model)
+            {
+                <li>
+                    @Html.ActionLink(item.Titulo, "MostraNoticia", "Home", new
+               {
+                   @noticiaId = item.NoticiasId,
+                   @categoria = item.Categoria.ToLower(),
+                   @titulo = item.Titulo.ToLower()
+               }, null);
+
+                    <em>@Html.DisplayFor(modelItem => item.Categoria) </em>
+                    <b>@Html.DisplayFor(modelItem => item.Data)</b>
+                </li>
+            }
+    </ul>
+</div>

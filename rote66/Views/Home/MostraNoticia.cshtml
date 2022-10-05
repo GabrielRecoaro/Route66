@@ -1,0 +1,15 @@
+﻿@model rote66.Models.Noticias
+@{
+    ViewBag.Title = "MostraNoticia";
+}
+
+<h2>@Model.Titulo</h2>
+
+<em>
+    @Model.Data - @Html.ActionLink(@Model.Categoria, "MostraCategoria", new
+             {
+                 @categoria = Model.Categoria}, null)
+</em>
+
+    <div>@Model.Conteudo</div>
+
